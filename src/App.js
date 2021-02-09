@@ -8,9 +8,9 @@ class App extends Component {
 
     this.state = {
       monsters: [
-        { name: 'Frankestein'}, 
-        { name: 'Drakula'}, 
-        { name: 'Zombie'}
+        { name: 'Frankestein', id: '01'}, 
+        { name: 'Drakula', id: '02'}, 
+        { name: 'Zombie', id: '03'}
       ]
     }
   }
@@ -18,22 +18,13 @@ class App extends Component {
   render() {
     return(
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Welcome { this.state.name } <br/>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <button onClick={() => this.setState({ name: 'Tewodros Wondimu'})}>Show Full Name</button>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {
+          this.state.monsters.map(monster => 
+            <h1 key={monster.id}>
+              {monster.name}
+            </h1>
+          )
+        }
       </div>
     );
   }
