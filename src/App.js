@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import { CardList } from './components/card-list/card-list.component';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      monsters: [
-        { name: 'Frankestein', id: '01'}, 
-        { name: 'Drakula', id: '02'}, 
-        { name: 'Zombie', id: '03'}
-      ]
+      monsters: []
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({monsters: users}))
   }
 
   render() {
     return(
       <div className="App">
+      <CardList name="Teddy">
         {
           this.state.monsters.map(monster => 
             <h1 key={monster.id}>
@@ -25,6 +29,7 @@ class App extends Component {
             </h1>
           )
         }
+      </CardList>
       </div>
     );
   }
