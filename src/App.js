@@ -5,8 +5,8 @@ import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       monsters: [], 
@@ -31,12 +31,19 @@ class App extends Component {
     );
     return(
       <div className="App">
-        <h1> Monsters Rolodex </h1>
         <SearchBox placeholder='search monsters' handleChange={this.handleChange}/>
         <CardList monsters={filteredMonsters} />
       </div>
     );
   }
 }
+
+/* opted to use class instead of function
+function App() {
+  return (
+    
+  );
+}
+*/
 
 export default App;
